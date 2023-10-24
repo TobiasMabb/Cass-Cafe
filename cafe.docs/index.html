@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('cassp.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            right: -200px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: green;
+            padding: 10px;
+            width: 150px;
+            height: 100%;
+            transition: right 0.3s;
+        }
+
+        .menu.active {
+            right: 0;
+        }
+
+			.menu-button {
+			position: fixed;
+			top: 10px;
+			right: 18px;
+			width: 40px; /* Set the width of the button to match the image width */
+			height: 40px; /* Set the height of the button to match the image height */
+			background: url('icon.png') no-repeat center center;
+			background-size: cover; /* Adjust this to control image scaling */
+			transition: left 0.3s;
+		}
+
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .menu a.active {
+            background-color: white;
+            color: green;
+        }
+		
+		.content {
+            display: none;
+            margin-left: 0px;
+            margin-top: 0px;
+		}
+
+		.content img {
+		width: 1519px; /* Set the desired width */
+		height: 840px;
+        }
+
+        .content#home {
+            display: block;
+        }
+		
+		.content#Appetizers,.content#Main-Dish,.content#Desserts,.content#Drinks {
+        display: none;
+        background-image: url('backgreen.jpg'); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 100%; /* Set the desired width */
+        height: 100vh; /* Set the desired height (100vh means 100% of the viewport height) */
+		}
+
+        .Appetizers-boxes,.Main-Dish-boxes,.Desserts-boxes {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+			align-items: center;
+        }
+
+        .box {
+			width: 240px;
+			height: 200px;
+			background-color: transparent;
+			color: white;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end; /* Align content to the bottom center */
+			align-items: center; /* Horizontally center the content */
+			cursor: pointer;
+			margin: 25px;
+			font-size: 15px;
+			transition: transform 0.3s, width 0.5s, height 0.5s, border 0.5s;
+			border: 2px solid white;
+			border-radius: 20px;
+			background-size: cover;
+			background-position: center center;
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+		}
+
+
+        .box.active {
+            width: 30vw;
+            height: 30vh;
+			background-image: none; /* Remove the default background image when clicked */
+			z-index: 10;
+			background-size: cover;
+        }
+		
+		.order-button {
+			background-color: white;
+			color: black;
+			border: none;
+			padding: 5px 8px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+			font-size: 12px;
+			align-self: center; /* Align the button to the bottom right */
+		}
+
+		.order-button:hover {
+			background-color: white;
+		}
+
+		
+        .box.caprese {		
+            background-image: url('caprese.jpg');
+        }
+
+		.box.caprese.active {		
+            background-image: url('caprese.jpg');
+        }
+		
+		.box.shrimpc {		
+            background-image: url('shrimpc.jpg'); 
+        }
+
+		.box.shrimpc.active {		
+            background-image: url('shrimpc.jpg');
+        }
+		
+		.box.mush {		
+            background-image: url('mush.jpg'); 
+        }
+
+		.box.mush.active {		
+            background-image: url('mush.jpg');
+        }
+		
+		.box.brusc {		
+            background-image: url('brusc.jpg'); 
+        }
+
+		.box.brusc.active {		
+            background-image: url('brusc.jpg');
+        }
+			
+		.box.shang {		
+            background-image: url('shang.jpg'); 
+        }
+
+		.box.shang.active {		
+            background-image: url('shang.jpg');
+        }
+			
+		.box.chich {		
+            background-image: url('chich.jpg'); 
+        }
+
+		.box.chich.active {		
+            background-image: url('chich.jpg');
+        }
+		
+		.box.gyoza {		
+            background-image: url('gyoza.jpg'); 
+        }
+
+		.box.gyoza.active {		
+            background-image: url('gyoza.jpg');
+        }
+		
+		.box.pakora {		
+            background-image: url('pakora.jpg'); 
+        }
+
+		.box.pakora.active {		
+            background-image: url('pakora.jpg');
+        }
+		
+	    .box.boki {		
+            background-image: url('boki.jpg'); 
+        }
+
+		.box.boki.active {		
+            background-image: url('boki.jpg');
+        }
+		
+		
+		
+		
+    </style>
+</head>
+<body>
+    <div class="menu" id="menu">
+	    <a href="#" "></a>
+		<a href="#" "></a>
+        <a href="#" onclick="showContent('home')">Home</a>
+        <a href="#" onclick="showContent('Appetizers')">Appetizers</a>
+        <a href="#" onclick="showContent('Main-Dish')">Main Dish</a>
+        <a href="#" onclick="showContent('Desserts')">Desserts</a>
+		<a href="#" onclick="showContent('Drinks')">Drinks/Beverages</a>
+		
+    </div>
+
+    <div class="menu-button" onclick="toggleMenu()"></div>
+	
+	    <div class="content" id="home">
+    </div>
+
+
+    <div class="content" id="Appetizers">
+	
+    <div class="Appetizers-boxes">
+        <div class="box caprese" onclick="toggleBox(this)">
+    <h3>CAPRESE SKEWERs</h3>
+    <p>Price: 150</p>
+    <button class="order-button" onclick="addToCart('caprese', 'Caprese Skewers', 5.99)">Order</button>
+     </div>
+
+        <div class="box shrimpc" onclick="toggleBox(this)">
+		<h3>SHRIMP COCKTAIL</h3>
+    <p>Price: 180</p>
+    <button class="order-button" onclick="addToCart('caprese', 'Caprese Skewers', 5.99)">Order</button>
+		</div>
+		
+		
+		<div class="box mush" onclick="toggleBox(this)">
+		<h3>BAKED MUSHROOM</h3>
+    <p>Price: 160</p>
+    <button class="order-button" onclick="addToCart('caprese', 'Caprese Skewers', 5.99)">Order</button>
+		</div>
+		
+		
+		</div>
+
+    <!-- second row of boxes -->
+    <div class="Appetizers-boxes">
+	    <div class="box brusc" onclick="toggleBox(this)">
+		<h3>BRUSCHETTA</h3>
+    <p>Price: 150/p>
+    <button class="order-button" onclick="addToCart('caprese', 'Caprese Skewers', 5.99)">Order</button>
+		</div>
+		
+        <div class="box shang" onclick="toggleBox(this)">
+		<h3>LUMPIANG SHANGHAI</h3>
+    <p>Price: 150</p>
+    <button class="order-button" onclick="addToCart('caprese', 'Caprese Skewers', 5.99)">Order</button>
+		</div>
+		
+		<div class="box chich" onclick="toggleBox(this)">
+		<h3>CHICHARONG BULAKLAK</h3>
+    <p>Price: $200</p>
+    <button class="order-button" onclick="addToCart('caprese', 'Caprese Skewers', 5.99)">Order</button>
+		</div>
+		
+		</div>
+		
+		<!-- third row of boxes -->
+    <div class="Appetizers-boxes">
+	    <div class="box gyoza" onclick="toggleBox(this)">
+		<h3>GYOZA</h3>
+    <p>Price: 140</p>
+    <button class="order-button" onclick="addToCart('caprese', 'Caprese Skewers', 5.99)">Order</button>
+		</div>
+		
+        <div class="box pakora" onclick="toggleBox(this)">
+		<h3>PAKORAS</h3>
+    <p>Price: $160</p>
+    <button class="order-button" onclick="addToCart('caprese', 'Caprese Skewers', 5.99)">Order</button>
+		</div>
+		
+		<div class="box boki" onclick="toggleBox(this)">
+		<h3>TTEOKBOKKI</h3>
+    <p>Price: 140</p>
+    <button class="order-button" onclick="addToCart('caprese', 'Caprese Skewers', 5.99)">Order</button>
+		</div>
+		
+		</div>
+	</div>
+	
+	<div class="content" id="Main-Dish">
+		
+    <div class="Main-Dish-boxes">
+        <div class="box monitor" onclick="toggleBox(this)"></div>
+		<div class="box speaker" onclick="toggleBox(this)"></div>
+		
+        </div>
+		
+		   <!-- second row of boxes -->
+    <div class="Main-Dish-boxes">
+	    <div class="box printer" onclick="toggleBox(this)"></div>
+		
+		</div>
+	</div>
+
+
+    <div class="content" id="Desserts">
+	
+	<div class="Desserts-boxes">
+		<div class="box ram" onclick="toggleBox(this)"></div>	
+		<div class="box rom" onclick="toggleBox(this)"></div>
+		<div class="box cpu" onclick="toggleBox(this)"></div>
+		
+		</div>
+		
+			<!-- second row of boxes -->
+	<div class="Desserts-boxes">
+		<div class="box gpu" onclick="toggleBox(this)"></div>
+		<div class="box motherboard" onclick="toggleBox(this)"></div>
+		<div class="box powersupply" onclick="toggleBox(this)"></div>
+		
+		</div>
+			<!-- third row of boxes -->
+	<div class="Desserts-boxes">	
+		<div class="box fan" onclick="toggleBox(this)"></div>
+		
+		</div>
+		
+		
+		<div class="content" id="Drinks">	
+		
+		<div class="box fan" onclick="toggleBox(this)"></div>
+		
+		</div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+
+        function showContent(sectionId) {
+            const contentSections = document.querySelectorAll('.content');
+            const menuLinks = document.querySelectorAll('.menu a');
+
+            contentSections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            menuLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.getElementById(sectionId).style.display = 'block';
+            document.querySelector(`[onclick="showContent('${sectionId}')`).classList.add('active');
+        }
+
+        function toggleBox(box) {
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(b => {
+                if (b !== box) {
+                    b.classList.remove('active');
+                }
+            });
+            box.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
